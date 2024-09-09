@@ -56,11 +56,23 @@ En este ejercicio se va a construír un modelo de clases para la capa lógica de
 	Lo anterior requiere:
 
 	* Agregar las dependencias de Spring.
-	* Agregar la configuración de Spring.
-	* Configurar la aplicación -mediante anotaciones- para que el esquema de persistencia sea inyectado al momento de ser creado el bean 'BlueprintServices'.
 
+	![image](https://github.com/user-attachments/assets/1c330655-bcba-4262-bc1e-0e5134dfa727)
+
+	* Agregar la configuración de Spring.
+
+	![image](https://github.com/user-attachments/assets/beb77c90-9f7c-4f3a-9cdd-08e61640cb2c)
+
+	* Configurar la aplicación -mediante anotaciones- para que el esquema de persistencia sea inyectado al momento de ser creado el bean 'BlueprintServices'.
+	
+	![image](https://github.com/user-attachments/assets/94a90884-56da-4fc5-924c-dd80034711b6)
+	![image](https://github.com/user-attachments/assets/e5d5eec8-aa7c-4cfa-9af9-fcfff2bef828)
 
 2. Complete los operaciones getBluePrint() y getBlueprintsByAuthor(). Implemente todo lo requerido de las capas inferiores (por ahora, el esquema de persistencia disponible 'InMemoryBlueprintPersistence') agregando las pruebas correspondientes en 'InMemoryPersistenceTest'.
+
+	![image](https://github.com/user-attachments/assets/dd61071d-26e3-4126-8d35-d0cdfabe618e)
+	![image](https://github.com/user-attachments/assets/e354aecd-3b9e-44cf-bd2a-def4c15a8a3b)
+	![image](https://github.com/user-attachments/assets/ddae4459-04d0-442c-a584-7af40bad8df9)
 
 3. Haga un programa en el que cree (mediante Spring) una instancia de BlueprintServices, y rectifique la funcionalidad del mismo: registrar planos, consultar planos, registrar planos específicos, etc.
 
