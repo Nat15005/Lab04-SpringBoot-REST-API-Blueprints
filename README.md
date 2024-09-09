@@ -76,8 +76,26 @@ En este ejercicio se va a construír un modelo de clases para la capa lógica de
 
 3. Haga un programa en el que cree (mediante Spring) una instancia de BlueprintServices, y rectifique la funcionalidad del mismo: registrar planos, consultar planos, registrar planos específicos, etc.
 
+	![image](https://github.com/user-attachments/assets/14812b93-bef2-4a70-9190-5c011684c91a)
+	
 4. Se quiere que las operaciones de consulta de planos realicen un proceso de filtrado, antes de retornar los planos consultados. Dichos filtros lo que buscan es reducir el tamaño de los planos, removiendo datos redundantes o simplemente submuestrando, antes de retornarlos. Ajuste la aplicación (agregando las abstracciones e implementaciones que considere) para que a la clase BlueprintServices se le inyecte uno de dos posibles 'filtros' (o eventuales futuros filtros). No se contempla el uso de más de uno a la vez:
 	* (A) Filtrado de redundancias: suprime del plano los puntos consecutivos que sean repetidos.
 	* (B) Filtrado de submuestreo: suprime 1 de cada 2 puntos del plano, de manera intercalada.
 
+	![image](https://github.com/user-attachments/assets/17dd381d-545f-49f1-b824-835e806a4bed)
+	![image](https://github.com/user-attachments/assets/eb3e4cd7-c626-4c96-a48b-9890f78dfb3e)
+	![image](https://github.com/user-attachments/assets/696ec583-36d2-4eb7-90ae-d2ae1cd9f7d8)
+	![image](https://github.com/user-attachments/assets/80b3625d-0a66-4417-a147-5e7e2ad15da4)
+
 5. Agrege las pruebas correspondientes a cada uno de estos filtros, y pruebe su funcionamiento en el programa de prueba, comprobando que sólo cambiando la posición de las anotaciones -sin cambiar nada más-, el programa retorne los planos filtrados de la manera (A) o de la manera (B). 
+
+	![image](https://github.com/user-attachments/assets/c1b857d0-0505-4111-8416-cbd0aa204b65)
+	![image](https://github.com/user-attachments/assets/9f2cc450-442d-4bbc-b7bb-80d6ca649eac)
+
+	- Cambiando la anotación para aplicar el filtro de Redundancia
+
+	![image](https://github.com/user-attachments/assets/efa4b65d-01ec-4a29-82d4-5caae38bf7ec)
+
+	- Cambiando la anotación para aplicar el filtro de Subsampling
+
+	![image](https://github.com/user-attachments/assets/904ab8ec-e11d-4b24-9b43-4fe84b4a67f5)	
