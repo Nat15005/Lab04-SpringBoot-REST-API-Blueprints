@@ -1,7 +1,8 @@
 ## Escuela Colombiana de Ingeniería
 
 ## Arquitecturas de Software
-
+### Desarrollado por Laura Natalia Rojas y Ana María Durán
+----
 # Taller – Principio de Inversión de dependencias, Contenedores Livianos e Inyección de dependencias.]
 Parte I. Ejercicio básico.
 
