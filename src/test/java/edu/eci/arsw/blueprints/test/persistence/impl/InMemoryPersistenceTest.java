@@ -10,6 +10,8 @@ import edu.eci.arsw.blueprints.model.Point;
 import edu.eci.arsw.blueprints.persistence.BlueprintNotFoundException;
 import edu.eci.arsw.blueprints.persistence.BlueprintPersistenceException;
 import edu.eci.arsw.blueprints.persistence.impl.InMemoryBlueprintPersistence;
+
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.Test;
@@ -69,6 +71,37 @@ public class InMemoryPersistenceTest {
         
     }
 
+    @Test
+    public void testGetBlueprint() throws BlueprintPersistenceException {
+        InMemoryBlueprintPersistence ibpp = new InMemoryBlueprintPersistence();
 
+        Blueprint bp = new Blueprint("author1", "bp1", new Point[] {new Point(0, 0), new Point(10, 10)});
+        ibpp.saveBlueprint(bp);
+
+        try {
+            Blueprint result = ibpp.getBlueprint("author1", "bp1");
+            assertEquals("bp1", result.getName());
+            assertEquals("author1", result.getAuthor());
+        } catch (BlueprintNotFoundException e) {
+            fail("Blueprint should exist");
+        }
+    }
+
+    @Test
+    public void testGetBlueprintsByAuthor() throws BlueprintPersistenceException {
+        InMemoryBlueprintPersistence ibpp = new InMemoryBlueprintPersistence();
+
+        Blueprint bp1 = new Blueprint("author1", "bp1", new Point[] {new Point(0, 0), new Point(10, 10)});
+        Blueprint bp2 = new Blueprint("author1", "bp2", new Point[] {new Point(5, 5), new Point(15, 15)});
+        ibpp.saveBlueprint(bp1);
+        ibpp.saveBlueprint(bp2);
+
+        try {
+            Set<Blueprint> blueprints = ibpp.getBlueprintsByAuthor("author1");
+            assertEquals(2, blueprints.size());
+        } catch (BlueprintNotFoundException e) {
+            fail("Blueprints should exist for author1");
+        }
+    }
     
 }
