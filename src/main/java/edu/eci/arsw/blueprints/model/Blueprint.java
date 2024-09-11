@@ -40,16 +40,35 @@ public class Blueprint {
     public List<Point> getPoints() {
         return points;
     }
-    
+    public void setPoints(List<Point> points) {
+        this.points = points;
+    }
+
     public void addPoint(Point p){
         this.points.add(p);
     }
 
     @Override
     public String toString() {
-        return "Blueprint{" + "author=" + author + ", name=" + name + '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("Blueprint{author=").append(author)
+                .append(", name=").append(name)
+                .append(", points=").append(formatPoints(points)) // Llama al nuevo método para formatear
+                .append("}");
+        return sb.toString();
     }
-
+    private String formatPoints(List<Point> points) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[ ");
+        for (int i = 0; i < points.size(); i++) {
+            sb.append(points.get(i).toString());
+            if (i < points.size() - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append(" ]");
+        return sb.toString();
+    }
     @Override
     public int hashCode() {
         int hash = 7;
@@ -85,7 +104,4 @@ public class Blueprint {
         
         return true;
     }
-    
-    
-    
 }

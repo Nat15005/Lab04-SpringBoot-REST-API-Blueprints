@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -42,11 +44,34 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
         }        
     }
 
+
+
     @Override
-    public Blueprint getBlueprint(String author, String bprintname) throws BlueprintNotFoundException {
-        return blueprints.get(new Tuple<>(author, bprintname));
+    public Blueprint getBlueprint(String author, String blueprintName) throws BlueprintNotFoundException {
+        Tuple<String, String> blueprintKey = new Tuple<>(author, blueprintName);
+        Blueprint bp = blueprints.get(blueprintKey);
+        if (bp == null) {
+            throw new BlueprintNotFoundException("Blueprint not found: " + author + ", " + blueprintName);
+        }
+        return bp;
+    }
+    @Override
+    public Set<Blueprint> getBlueprintsByAuthor(String author) throws BlueprintNotFoundException {
+        Set<Blueprint> authorBlueprints = blueprints.values().stream()
+                .filter(bp -> bp.getAuthor().equals(author))
+                .collect(Collectors.toSet());
+
+        if (authorBlueprints.isEmpty()) {
+            throw new BlueprintNotFoundException("No blueprints found for author: " + author);
+        }
+
+        return authorBlueprints;
     }
 
-    
-    
+    @Override
+    public Set<Blueprint> getAllBluePrints() {
+        return (Set<Blueprint>) blueprints.values();
+    }
+
+
 }
